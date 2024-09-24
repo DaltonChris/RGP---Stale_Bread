@@ -215,8 +215,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871169017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871169019}
+  - component: {fileID: 1871169018}
+  m_Layer: 0
+  m_Name: Level Gen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1871169018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871169017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6323200c1a586574990a14aaf81e02b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridWidth: 287
+  GridHeight: 19
+  RoomGenAttempts: 400
+  RoomSizeExtention: 0
+  RoomExtentionRate: 1
+  StartRoomSize: 4
+  TilePreFab: {fileID: 3245713635568060351, guid: 1b8da6fc234030644a899377b16531b8, type: 3}
+  CoinPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
+  ChestPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
+  RoomLightPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
+  PathLightPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
+  EnemyPreFab: {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  LadderPreFabs:
+  - {fileID: 6065952368011106283, guid: 6e03651cd62713f45abe44debc0fc8a1, type: 3}
+  DeadTreePreFabs:
+  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  LargeTreePrefabs:
+  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  BushPrefabs:
+  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+--- !u!4 &1871169019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871169017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1136505277}
+  - {fileID: 1871169019}
