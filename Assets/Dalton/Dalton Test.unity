@@ -123,6 +123,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &831669359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831669361}
+  - component: {fileID: 831669360}
+  m_Layer: 0
+  m_Name: Dog-7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &831669360
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831669359}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: bb5dace682cd3fc4e84c5c6d84a52a06, type: 3}
+  m_Color: {r: 0.5283019, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &831669361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831669359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.1, y: 0.922, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136505274
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,26 +328,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6323200c1a586574990a14aaf81e02b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridWidth: 287
-  GridHeight: 19
-  RoomGenAttempts: 400
-  RoomSizeExtention: 0
+  GridWidth: 199
+  GridHeight: 29
+  RoomGenAttempts: 600
+  RoomSizeExtention: 1
   RoomExtentionRate: 1
-  StartRoomSize: 4
+  StartRoomSize: 3
   TilePreFab: {fileID: 3245713635568060351, guid: 1b8da6fc234030644a899377b16531b8, type: 3}
   CoinPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
-  ChestPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
-  RoomLightPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
-  PathLightPreFab: {fileID: 591059881096159752, guid: dbaf11e12148c794eaa7dc7a0d67ed20, type: 3}
+  ChestPreFab: {fileID: 591059881096159752, guid: a6925f050bcddf94592005e627dbc8e9, type: 3}
+  RoomLightPreFab: {fileID: 2346365934062382394, guid: e17b07b3d773ede4a949d8d7b022ff81, type: 3}
+  PathLightPreFab: {fileID: 2346365934062382394, guid: e17b07b3d773ede4a949d8d7b022ff81, type: 3}
   EnemyPreFab: {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
   LadderPreFabs:
   - {fileID: 6065952368011106283, guid: 6e03651cd62713f45abe44debc0fc8a1, type: 3}
   DeadTreePreFabs:
-  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  - {fileID: 1469189966933415039, guid: 79676ea63e32ea645a545cdb44373bb4, type: 3}
   LargeTreePrefabs:
-  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  - {fileID: 1469189966933415039, guid: 79676ea63e32ea645a545cdb44373bb4, type: 3}
   BushPrefabs:
-  - {fileID: 3013890704512222880, guid: 497ca3d224aa93b4aabbb3e7313c6240, type: 3}
+  - {fileID: 1469189966933415039, guid: 66a1a6f0e839b8949b38c10cac1170e1, type: 3}
 --- !u!4 &1871169019
 Transform:
   m_ObjectHideFlags: 0
@@ -285,3 +369,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1136505277}
   - {fileID: 1871169019}
+  - {fileID: 831669361}

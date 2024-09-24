@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6974480944910601035}
   - component: {fileID: 1795592814810850257}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Toast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d5935d3229362214e8d71504459eb1ea, type: 3}
-  m_Color: {r: 1, g: 0.9381745, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fa6bf9fc0814b164681a270deaa9f841, type: 3}
+  m_Color: {r: 1, g: 0.9912918, b: 0.8612138, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
