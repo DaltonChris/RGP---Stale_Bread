@@ -21,10 +21,4 @@ public class Coin : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        // Draw the detection radius in the editor for debugging
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
 }
