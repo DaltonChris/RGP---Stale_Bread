@@ -17,13 +17,7 @@ public class Coin : MonoBehaviour
         Collider2D hit = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
         if (hit != null)
         {
-            // If player detected, increment the coin counter and destroy the coin
-            StefanPlayer player = hit.GetComponent<StefanPlayer>();
-            if (player != null)
-            {
-                player.IncrementCoinCounter();
-                Destroy(gameObject);
-            }
+
         }
     }
 
