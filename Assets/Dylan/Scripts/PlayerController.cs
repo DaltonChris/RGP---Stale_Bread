@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     private float dashTime;
 
+    private bool IsFacingRight = true; // Tracks the player's facing direction, initialize to true (facing right)
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,6 +76,29 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(RechargeDash());
         }
+
+        Turncheck(); // Check if the player needs to turn
+    }
+
+    private void Turncheck()
+    {
+        if (Input.GetAxis("Horizontal") > 0 && !IsFacingRight)
+        {
+            Turn();
+        }
+        else if (Input.GetAxis("Horizontal") < 0 && IsFacingRight)
+        {
+            Turn();
+        }
+    }
+
+    private void Turn()
+    {
+        // Flip the player
+        IsFacingRight = !IsFacingRight;
+        Vector3 rotator = transform.rotation.eulerAngles;
+        rotator.y = IsFacingRight ? 0f : 180f;
+        transform.rotation = Quaternion.Euler(rotator);
     }
 
     void StartDash()
