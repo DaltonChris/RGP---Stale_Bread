@@ -36,10 +36,6 @@ using Random = UnityEngine.Random;
   #   was just an idea on how I could Implement and alter a really solid foundational concept. 
   #
   #    I'm pretty stoked on how the levels look now, and do want to build on this in the future & learn more about procedual generation.
-  #    Learnt alot during this assighment! -   
-  #  (REMOVE BOTTOM 2 Lines before submit!)
-  #     - (My autism loves over formatting pointless things man look at those hashtag boxes)
-  #     - >33 methods >1002lines >lmao >Still the most readable class ive probably ever written (Rip Edward) [My apologies]
   #
   #################################################################################################################################################
     
@@ -66,6 +62,10 @@ using Random = UnityEngine.Random;
   #   - Free Game Assets. (2020). Free Swamp 2D Tileset - Pixel Art. itch.io. https://free-game-assets.itch.io/free-swamp-2d-tileset-pixel-art 
   #
   ###################################################################################################################################################
+*/
+
+/*
+  Slightly alter code for implementaion in RGP assighment
 */
 
 public class LevelGenerator : MonoBehaviour
