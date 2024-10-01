@@ -73,7 +73,7 @@ public class Tile : MonoBehaviour
             case TileType.Wall: // Case wall Type, Set Wall Sprite
                 SpriteRenderer.sprite = WallSprite;
                 SpriteRenderer.sortingOrder = 0;
-
+                BoxCollider2d.enabled = true;
                 SpriteRenderer.sortingLayerName = "Walls"; // Stefan ..alters sorting layer?
                 break;
             case TileType.Path: // Case Path Type, Set Wall Sprite
@@ -85,6 +85,7 @@ public class Tile : MonoBehaviour
             case TileType.Grass: // Case Grass Type, Set Grass Sprite
                 SpriteRenderer.sprite = GrassSprite;
                 SpriteRenderer.sortingOrder = 0;
+                BoxCollider2d.enabled = true;
                 break;
             default:
                 break;
