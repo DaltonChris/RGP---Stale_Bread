@@ -142,6 +142,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateDashChargeUI()
     {
-        dashChargeText.text = "Dash Charges: " + currentDashCharges;
+        dashChargeText.text = "Butter Dashes: " + currentDashCharges;
     }
 }
