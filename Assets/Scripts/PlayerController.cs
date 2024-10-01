@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f; // Force applied when the player jumps
     public float dashSpeed = 20f; // Speed of the dash
     public float dashDuration = 0.2f; // Duration of the dash
-    public float dashRechargeTime = 10f; // Time in seconds to recharge a dash
+    public float dashRechargeTime = 10f; // Time in seconds to recharge a dash.
+
     public Transform groundCheck; // A point used to check if the player is grounded
     public float groundCheckRadius = 0.2f; // Radius of the ground check
     public LayerMask whatIsGround; // Layer to determine what counts as ground
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public int maxDashCharges = 1; // Maximum number of dash charges
     private int currentDashCharges = 0; // Current number of dash charges
     private bool isRecharging = false; // Flag to check if recharging is ongoing
+
+    public float climbSpeed = 5f; // Speed for climbing the ladder
+    private bool isOnLadder = false; // Tracks if the player is currently on a ladder
 
     public TMP_Text dashChargeText; // Reference to the TMP Text UI element
 
@@ -36,9 +40,24 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
+{
+    // Get horizontal input (A/D keys or Left/Right arrow keys)
+    moveInput = Input.GetAxis("Horizontal");
+
+    if (isOnLadder)
     {
-        // Get horizontal input (A/D keys or Left/Right arrow keys)
-        moveInput = Input.GetAxis("Horizontal");
+        // Vertical movement for ladder climbing
+        float verticalInput = Input.GetAxis("Vertical"); // W/S or Up/Down arrows
+        // Allow movement on both axes
+        rb.velocity = new Vector2(moveInput * moveSpeed, verticalInput * climbSpeed);
+
+        // Disable gravity while on the ladder
+        rb.gravityScale = 0.1f;
+    }
+    else
+    {
+        // Re-enable gravity if not on ladder
+        rb.gravityScale = 1f;
 
         if (!isDashing)
         {
@@ -76,9 +95,10 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(RechargeDash());
         }
-
-        Turncheck(); // Check if the player needs to turn
     }
+
+    Turncheck(); // Check if the player needs to turn
+}
 
     private void Turncheck()
     {
@@ -126,7 +146,21 @@ public class PlayerController : MonoBehaviour
                 UpdateDashChargeUI();
             }
         }
+
+        if (other.CompareTag("Ladder"))
+        {
+            isOnLadder = true; // Player is now on the ladder
+        }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isOnLadder = false; // Player is off the ladder
+        }
+    }
+
 
     IEnumerator RechargeDash()
     {
