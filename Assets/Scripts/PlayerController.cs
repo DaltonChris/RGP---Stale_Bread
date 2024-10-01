@@ -33,10 +33,14 @@ public class PlayerController : MonoBehaviour
 
     private bool IsFacingRight = true; // Tracks the player's facing direction, initialize to true (facing right)
 
+    private PlayerAnimations playerAnim;//Reference to animations script
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         UpdateDashChargeUI(); // Initialize UI with current charge count.
+
+        playerAnim = GetComponent<PlayerAnimations>();
     }
 
     void Update()
@@ -66,11 +70,37 @@ public class PlayerController : MonoBehaviour
 
             // Check if the player is grounded
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-
+            
             // Jumping logic
             if (isGrounded && Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+            }
+
+            //Uses velocity to determine the general movement animations
+            if (isGrounded)
+            {
+                if (rb.velocity.x != 0)
+                {
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.RUN);
+                }
+                else
+                {
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.IDLE);
+                }
+            }
+            else
+            {
+                if (rb.velocity.y > 0)
+                {
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                }
+                else
+                {
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
+                }
             }
 
             // Dash input logic
@@ -127,12 +157,16 @@ public class PlayerController : MonoBehaviour
         dashTime = dashDuration;
         rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
         currentDashCharges--; // Consume one dash charge
-        UpdateDashChargeUI();
+        UpdateDashChargeUI();    
+
+        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.DASH);
     }
 
     void EndDash()
     {
         isDashing = false;
+
+        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -538,17 +538,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8872033920586806956, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
     - target: {fileID: 9159266226584794546, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9159266226584794546, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -586,6 +582,14 @@ PrefabInstance:
     - target: {fileID: 5432624716020033369, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972464502503617228, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972464502503617228, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6745484040980406453, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
       propertyPath: m_LocalPosition.x
