@@ -155,12 +155,25 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
-        rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
+
+        
+        if (Input.GetKey(KeyCode.W) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        {
+            // Dash diagonally upwards 
+            rb.velocity = new Vector2(moveInput * dashSpeed, jumpForce);
+        }
+        else
+        {
+            // Normal horizontal dash
+            rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
+        }
+
         currentDashCharges--; // Consume one dash charge
-        UpdateDashChargeUI();    
+        UpdateDashChargeUI();
 
         playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.DASH);
     }
+
 
     void EndDash()
     {
