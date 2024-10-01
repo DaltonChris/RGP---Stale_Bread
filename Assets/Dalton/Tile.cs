@@ -48,12 +48,14 @@ public class Tile : MonoBehaviour
     [SerializeField] Sprite PathSprite;
     [SerializeField] Sprite GrassSprite;
     SpriteRenderer SpriteRenderer;
+    BoxCollider2D BoxCollider2d;
 
     public TileType Type { get; internal set; }
 
     private void Awake() // On awake get the SpriteRenderer
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        BoxCollider2d = GetComponent<BoxCollider2D>();
     }
 
     // Method to change the type of the tile and update sprite
@@ -78,6 +80,7 @@ public class Tile : MonoBehaviour
                 SpriteRenderer.sprite = PathSprite;
                 SpriteRenderer.sortingOrder = -10; // have path seth further back than walls/tiles
                 gameObject.layer = LayerMask.NameToLayer("Default"); // Dalton attempt to bugfix 
+                BoxCollider2d.enabled = false;
                 break;
             case TileType.Grass: // Case Grass Type, Set Grass Sprite
                 SpriteRenderer.sprite = GrassSprite;

@@ -105,7 +105,7 @@ public class LevelGenerator : MonoBehaviour
   {
     // If spacebar is pressed and the level has not been generated
     // Initalise the grid (Start generating)
-    if (Input.GetKeyDown(KeyCode.Space) && !HasGenerated) InitGrid(GridWidth, GridHeight);
+    if (!HasGenerated) InitGrid(GridWidth, GridHeight);
   }
 
   /// <summary>
