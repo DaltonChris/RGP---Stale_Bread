@@ -92,8 +92,8 @@ public class LevelGenerator : MonoBehaviour
 
   int[,] Regions; // An array of int's for each pos in the grid each int represents a different Region
   int CurrentRegion = -1; // Current region's ID (declared at -1, first region to be 0)
-  readonly int ConnectorAttempts = 25; // How many times will we try to create region connectors
-  readonly float LevelGenDelay = 0.5f; // The delay inbetween each generation action (To better visualise while developing)
+  readonly int ConnectorAttempts = 35; // How many times will we try to create region connectors
+  readonly float LevelGenDelay = 0.05f; // The delay inbetween each generation action (To better visualise while developing)
   readonly List<Vector2Int> RoomList = new(); // A list of all grid position that contain a room
   readonly List<Room> Rooms = new(); // A dictionary of all rooms in the level
   readonly List<Vector2Int> LadderPositions = new(); // A list of all grid position that contain a ladder
