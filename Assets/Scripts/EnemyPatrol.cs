@@ -123,35 +123,6 @@ public class EnemyPatrol : MonoBehaviour
     {
         bool val = true;
         float castDist = baseCastDist * 2;
-        if (facingDirection == LEFT)
-        {
-            castDist = -baseCastDist;
-        }
-        else
-        {
-            castDist = baseCastDist;
-        }
-        Vector3 targetPos = EyesPos.position;
-        targetPos.x -= castDist;
-
-        Debug.DrawLine(EyesPos.position, targetPos, Color.green);
-
-        if (Physics2D.Linecast(EyesPos.position, targetPos, 1 << LayerMask.NameToLayer("Enemy")))
-        {
-            val = true;
-        }
-        else
-        {
-            val = false;
-        }
-
-        return val;
-    }
-
-    bool IsHittingEnemyLow()
-    {
-        bool val = false;
-        float castDist = baseCastDist * 2;
         if (facingDirection == RIGHT)
         {
             castDist = -baseCastDist;
@@ -174,6 +145,15 @@ public class EnemyPatrol : MonoBehaviour
             val = false;
         }
 
+        return val;
+    }
+
+    bool IsHittingEnemyLow()
+    {
+        bool val = false;
+
+        // Not needed 
+        
         return val;
     }
 }
