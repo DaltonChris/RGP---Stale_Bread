@@ -135,6 +135,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Gen
       objectReference: {fileID: 0}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: GridWidth
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: CoinPreFab
+      value: 
+      objectReference: {fileID: 554747244324154443, guid: e389d01f3fa8b1e40bd3d8d1d4d819e5, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: GridHeight
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: StartRoomSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: RoomGenAttempts
+      value: 1800
+      objectReference: {fileID: 0}
     - target: {fileID: 8853020934214116765, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -178,8 +198,66 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 745816968522238894, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254299575}
   m_SourcePrefab: {fileID: 100100000, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+--- !u!1 &1254299572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 745816968522238894, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+  m_PrefabInstance: {fileID: 835882942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1254299575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254299572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.35
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1601653235 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1914941496298832820, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
@@ -254,20 +332,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: dashSpeed
-      value: 15
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: jumpForce
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: dashChargeText
       value: 
       objectReference: {fileID: 1692289866}
+    - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: dashRechargeTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083360617419936891, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: m_Color.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083360617419936891, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4279788580809128948, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -282,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279788580809128948, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: 4279788580809128948, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -551,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745484040980406453, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: 6745484040980406453, guid: 30b93cac195629d49a768ca064b1d567, type: 3}
       propertyPath: m_LocalPosition.z

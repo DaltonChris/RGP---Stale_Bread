@@ -93,7 +93,7 @@ public class LevelGenerator : MonoBehaviour
   int[,] Regions; // An array of int's for each pos in the grid each int represents a different Region
   int CurrentRegion = -1; // Current region's ID (declared at -1, first region to be 0)
   readonly int ConnectorAttempts = 35; // How many times will we try to create region connectors
-  readonly float LevelGenDelay = 0.05f; // The delay inbetween each generation action (To better visualise while developing)
+  readonly float LevelGenDelay = 0.01f; // The delay inbetween each generation action (To better visualise while developing)
   readonly List<Vector2Int> RoomList = new(); // A list of all grid position that contain a room
   readonly List<Room> Rooms = new(); // A dictionary of all rooms in the level
   readonly List<Vector2Int> LadderPositions = new(); // A list of all grid position that contain a ladder
@@ -225,7 +225,7 @@ public class LevelGenerator : MonoBehaviour
     for (int i = 0; i < RoomGenAttempts; i++)
     {
       #region Randomise Room Size / Position
-      int size = Random.Range(3, 5) * 2 + 1; // Random range between 3,5 Multiplied by 2 + 1 to keep rooms odd
+      int size = Random.Range(1, 3) * 2 + 1; // Random range between 3,5 Multiplied by 2 + 1 to keep rooms odd
       int width = size; // declare width int set to size
       int height = size / 2; // declare height int set to half size
 
@@ -299,9 +299,9 @@ public class LevelGenerator : MonoBehaviour
   void AllocateStartArea(int startRoomSize) // Mayb--DONT add to room list (easy way to avoid spawnpoint item/enemy spawns)
   {
     StartRegion(); // Start a new region (Increment current region)
-    for (int y = 1; y < startRoomSize / 2; y++) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
+    for (int y = GridHeight - 2; y >= GridHeight - (startRoomSize / 2); y--) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
     {
-      for (int x = 1; x < startRoomSize; x++) // For each Position in the grid starting at 1 on the x axis ending at size of the start room
+      for (int x = 1; x < startRoomSize + 2; x++) // For each Position in the grid starting at 1 on the x axis ending at size of the start room
       {
         Tiles[x, y].SetType(TileType.Path); // Set type
         Regions[x, y] = CurrentRegion;// Update the Regions array with the new region information the room tile
