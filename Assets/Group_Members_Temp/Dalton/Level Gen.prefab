@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8853020934214116765}
   - component: {fileID: 2564756660827766847}
+  - component: {fileID: 3831569919051196427}
   m_Layer: 0
   m_Name: Level Gen
   m_TagString: Untagged
@@ -44,14 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6323200c1a586574990a14aaf81e02b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridWidth: 199
-  GridHeight: 29
-  RoomGenAttempts: 600
+  GridWidth: 123
+  GridHeight: 35
+  RoomGenAttempts: 1800
   RoomSizeExtention: 1
   RoomExtentionRate: 1
-  StartRoomSize: 3
+  StartRoomSize: 6
   TilePreFab: {fileID: 3245713635568060351, guid: 1b8da6fc234030644a899377b16531b8, type: 3}
-  CoinPreFab: {fileID: 4116907494636459606, guid: 975193ac30e2d0247a67e81a54564c0c, type: 3}
+  CoinPreFab: {fileID: 554747244324154443, guid: e389d01f3fa8b1e40bd3d8d1d4d819e5, type: 3}
   ChestPreFab: {fileID: 591059881096159752, guid: a6925f050bcddf94592005e627dbc8e9, type: 3}
   RoomLightPreFab: {fileID: 2346365934062382394, guid: e17b07b3d773ede4a949d8d7b022ff81, type: 3}
   PathLightPreFab: {fileID: 2346365934062382394, guid: e17b07b3d773ede4a949d8d7b022ff81, type: 3}
@@ -64,3 +65,53 @@ MonoBehaviour:
   - {fileID: 1469189966933415039, guid: 79676ea63e32ea645a545cdb44373bb4, type: 3}
   BushPrefabs:
   - {fileID: 1469189966933415039, guid: 66a1a6f0e839b8949b38c10cac1170e1, type: 3}
+--- !u!114 &3831569919051196427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745816968522238894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.35
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}

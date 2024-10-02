@@ -805,12 +805,12 @@ public class LevelGenerator : MonoBehaviour
         if (IsGrassTile(x, y)) // Check that the tile is a grass tile
         {
           // if so roll a  10%~ chance to spawn a coin at the postion +1 on the y axis
-          if (Random.Range(0, 10) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
+          if (Random.Range(0, 5) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
 
           if (IsTileInRoomList(x, y + 1)) // Check if the tile above is within a room
           {
             // if so roll a  7%~ chance to spawn a chest at the postion +1 on the y axis
-            if (Random.Range(0, 13) == 0) Instantiate(ChestPreFab, new Vector3(x, y + 1, 0), Quaternion.identity);
+            if (Random.Range(0, 7) == 0) Instantiate(ChestPreFab, new Vector3(x, y + 1, 0), Quaternion.identity);
           }
         }
       }

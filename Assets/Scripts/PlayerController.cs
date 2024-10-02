@@ -288,6 +288,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateDashChargeUI()
     {
-        dashChargeText.text = "Butter Dashes: " + currentDashCharges;
+        dashChargeText.text = "BUTTER DASH x " + currentDashCharges;
     }
 }

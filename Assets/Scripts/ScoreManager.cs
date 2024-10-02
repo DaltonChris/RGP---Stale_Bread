@@ -24,6 +24,6 @@ public class ScoreManager : MonoBehaviour
     // Method to update the UI with the current score
     private void UpdateScoreUI()
     {
-        scoreText.text = "Bread: " + score;
+        scoreText.text = "BREAD: " + score;
     }
 }
