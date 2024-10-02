@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.254717, g: 0.24820168, b: 0.24820168, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02404e5b74d9bbb48a90a06227aa7ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallSprite: {fileID: 21300000, guid: 2e0428442d9c64646a6638f4b5cbaed6, type: 3}
+  WallSprite: {fileID: 21300000, guid: 48ebc9151c5e2834e9fb98a75853bc8b, type: 3}
   PathSprite: {fileID: 21300000, guid: bf19f94e2f1e626499440bb325ed5b95, type: 3}
-  GrassSprite: {fileID: 21300000, guid: ca4e7b22a45438845a643ccc44340c9c, type: 3}
+  GrassSprite: {fileID: 21300000, guid: db7b496dca6f6b9469af59fe11069773, type: 3}
 --- !u!61 &-2577949447464736656
 BoxCollider2D:
   m_ObjectHideFlags: 0
