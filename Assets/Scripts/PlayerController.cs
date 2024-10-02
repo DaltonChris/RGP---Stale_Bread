@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
 
     public AudioClip dashSound1; 
-    public AudioClip dashSound2; 
+    public AudioClip dashSound2;
+    public AudioClip movementSound; // Sound played when moving left or right
     private AudioSource audioSource; // AudioSource to play sounds
 
 
@@ -51,91 +52,95 @@ public class PlayerController : MonoBehaviour
 
 
     void Update()
-{
-    // Get horizontal input (A/D keys or Left/Right arrow keys)
-    moveInput = Input.GetAxis("Horizontal");
-
-    if (isOnLadder)
     {
-        // Vertical movement for ladder climbing
-        float verticalInput = Input.GetAxis("Vertical"); // W/S or Up/Down arrows
-        // Allow movement on both axes
-        rb.velocity = new Vector2(moveInput * moveSpeed, verticalInput * climbSpeed);
+        // Get horizontal input (A/D keys or Left/Right arrow keys)
+        moveInput = Input.GetAxis("Horizontal");
 
-        // Disable gravity while on the ladder
-        rb.gravityScale = 0.1f;
-    }
-    else
-    {
-        // Re-enable gravity if not on ladder
-        rb.gravityScale = 1f;
-
-        if (!isDashing)
+        if (isOnLadder)
         {
-            // Set the velocity for the Rigidbody2D
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            // Vertical movement for ladder climbing
+            float verticalInput = Input.GetAxis("Vertical"); // W/S or Up/Down arrows
+                                                             // Allow movement on both axes
+            rb.velocity = new Vector2(moveInput * moveSpeed, verticalInput * climbSpeed);
 
-            // Check if the player is grounded
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-            
-            // Jumping logic
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+            // Disable gravity while on the ladder
+            rb.gravityScale = 0.1f;
+        }
+        else
+        {
+            // Re-enable gravity if not on ladder
+            rb.gravityScale = 1f;
+
+            if (!isDashing)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                // Set the velocity for the Rigidbody2D
+                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
-            }
+                // Play or stop the movement sound
+                HandleMovementSound();
 
-            //Uses velocity to determine the general movement animations
-            if (isGrounded)
-            {
-                if (rb.velocity.x != 0)
+                // Check if the player is grounded
+                isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
+                // Jumping logic
+                if (isGrounded && Input.GetKeyDown(KeyCode.Space))
                 {
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.RUN);
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                }
+
+                //Uses velocity to determine the general movement animations
+                if (isGrounded)
+                {
+                    if (rb.velocity.x != 0)
+                    {
+                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.RUN);
+                    }
+                    else
+                    {
+                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.IDLE);
+                    }
                 }
                 else
                 {
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.IDLE);
+                    if (rb.velocity.y > 0)
+                    {
+                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                    }
+                    else
+                    {
+                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
+                    }
+                }
+
+                // Dash input logic
+                if (currentDashCharges > 0 && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+                {
+                    StartDash();
                 }
             }
             else
             {
-                if (rb.velocity.y > 0)
+                // Continue dashing
+                dashTime -= Time.deltaTime;
+
+                if (dashTime <= 0)
                 {
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
-                }
-                else
-                {
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
+                    EndDash();
                 }
             }
 
-            // Dash input logic
-            if (currentDashCharges > 0 && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+            // Start recharging if no charges are available and not already recharging
+            if (currentDashCharges == 0 && !isRecharging)
             {
-                StartDash();
-            }
-        }
-        else
-        {
-            // Continue dashing
-            dashTime -= Time.deltaTime;
-
-            if (dashTime <= 0)
-            {
-                EndDash();
+                StartCoroutine(RechargeDash());
             }
         }
 
-        // Start recharging if no charges are available and not already recharging
-        if (currentDashCharges == 0 && !isRecharging)
-        {
-            StartCoroutine(RechargeDash());
-        }
+        Turncheck(); // Check if the player needs to turn
     }
 
-    Turncheck(); // Check if the player needs to turn
-}
 
     private void Turncheck()
     {
@@ -190,6 +195,30 @@ public class PlayerController : MonoBehaviour
         AudioClip selectedDashSound = Random.Range(0, 2) == 0 ? dashSound1 : dashSound2;
         audioSource.PlayOneShot(selectedDashSound);
     }
+
+    void HandleMovementSound()
+    {
+        // Check if the player is moving and on grounded
+        if (Mathf.Abs(moveInput) > 0 && isGrounded)
+        {
+            // If the movement sound is not already playing, play it
+            if (!audioSource.isPlaying)
+            {
+                audioSource.loop = true; // Set looping for continuous movement sound
+                audioSource.clip = movementSound;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            // If the player stops moving or is not on the ground, stop the sound
+            if (audioSource.isPlaying && audioSource.clip == movementSound)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
 
     void EndDash()
     {
