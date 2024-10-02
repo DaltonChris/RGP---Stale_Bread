@@ -42,12 +42,17 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimations playerAnim;//Reference to animations script
 
+    public Slider HealthBar;
+    public int MaxHealth = 100;
+    public int Health;
+    bool IsDamageable = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>(); 
         UpdateDashChargeUI(); // Initialize UI with current charge count.
-
+        Health = MaxHealth;
         playerAnim = GetComponent<PlayerAnimations>();
     }
 
@@ -288,6 +293,22 @@ public class PlayerController : MonoBehaviour
 
     void UpdateDashChargeUI()
     {
-        dashChargeText.text = "BUTTER DASH x " + currentDashCharges;
+        dashChargeText.text = "BUTTER x " + currentDashCharges;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        StartCoroutine(DamageTimer());
+        if (!IsDamageable) { return; }
+        IsDamageable = false;
+        Health -= dmg;
+        HealthBar.value = Health;
+    }
+
+    IEnumerator DamageTimer()
+    {
+        
+        yield return new WaitForSeconds(1f);
+        IsDamageable = true;
     }
 }
