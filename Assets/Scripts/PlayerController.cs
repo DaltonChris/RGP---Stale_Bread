@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public float climbSpeed = 5f; // Speed for climbing the ladder
     private bool isOnLadder = false; // Tracks if the player is currently on a ladder
+    private bool canDoubleJump = false; // Tracks if the player can double jump
 
     public TMP_Text dashChargeText; // Reference to the TMP Text UI element
 
@@ -83,12 +84,27 @@ public class PlayerController : MonoBehaviour
                 isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
                 // Jumping logic
-                if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+                 if (isGrounded)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    canDoubleJump = true; // Reset double jump when player is grounded
 
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                    }
                 }
+                else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
+                {
+                    // Double jump logic
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    canDoubleJump = false; // Disable further double jumps
+                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+
+                    // Optional: You can add a sound or effect for the double jump
+                    Debug.Log("Double Jump activated!");
+                }
+
 
                 //Uses velocity to determine the general movement animations
                 if (isGrounded)
@@ -165,28 +181,32 @@ public class PlayerController : MonoBehaviour
 
     void StartDash()
     {
-        isDashing = true;
-        dashTime = dashDuration;
+        
+        if (moveInput != 0)
+        {
+            isDashing = true;
+            dashTime = dashDuration;
 
         
-        if (Input.GetKey(KeyCode.W) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
-        {
-            // Dash diagonally upwards 
-            rb.velocity = new Vector2(moveInput * dashSpeed, jumpForce);
+            if (Input.GetKey(KeyCode.W) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+            {
+                // Dash diagonally upwards 
+                rb.velocity = new Vector2(moveInput * dashSpeed, jumpForce);
+            }
+            else
+            {
+                // Normal horizontal dash
+                rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
+            }
+
+            // Play one of the two dash sounds randomly
+            PlayDashSound();
+
+            currentDashCharges--; // Consume one dash charge
+            UpdateDashChargeUI();
+
+            playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.DASH);
         }
-        else
-        {
-            // Normal horizontal dash
-            rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
-        }
-
-        // Play one of the two dash sounds randomly
-        PlayDashSound();
-
-        currentDashCharges--; // Consume one dash charge
-        UpdateDashChargeUI();
-
-        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.DASH);
     }
 
     void PlayDashSound()
