@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     private float dashTime;
 
+    public AudioClip dashSound1; 
+    public AudioClip dashSound2; 
+    private AudioSource audioSource; // AudioSource to play sounds
+
+
     private bool IsFacingRight = true; // Tracks the player's facing direction, initialize to true (facing right)
 
     private PlayerAnimations playerAnim;//Reference to animations script
@@ -38,10 +43,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>(); 
         UpdateDashChargeUI(); // Initialize UI with current charge count.
 
         playerAnim = GetComponent<PlayerAnimations>();
     }
+
 
     void Update()
 {
@@ -168,12 +175,21 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(moveInput * dashSpeed, rb.velocity.y);
         }
 
+        // Play one of the two dash sounds randomly
+        PlayDashSound();
+
         currentDashCharges--; // Consume one dash charge
         UpdateDashChargeUI();
 
         playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.DASH);
     }
 
+    void PlayDashSound()
+    {
+        // Randomly select one sound and plays on dash
+        AudioClip selectedDashSound = Random.Range(0, 2) == 0 ? dashSound1 : dashSound2;
+        audioSource.PlayOneShot(selectedDashSound);
+    }
 
     void EndDash()
     {
