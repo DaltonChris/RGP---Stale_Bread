@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
     void HandleMovementSound()
     {
         // Check if the player is moving and on grounded
-        if (Mathf.Abs(moveInput) > 0 && isGrounded)
+        if (Mathf.Abs(moveInput) > 0 && isGrounded && !isOnLadder)
         {
             // If the movement sound is not already playing, play it
             if (!audioSource.isPlaying)
