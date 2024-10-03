@@ -844,6 +844,14 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8872033920586806956, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872033920586806956, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 9159266226584794546, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_Size.x
       value: 0.4
