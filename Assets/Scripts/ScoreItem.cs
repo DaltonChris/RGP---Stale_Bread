@@ -14,11 +14,13 @@ public class ScoreItem : MonoBehaviour
         {
             // Find the ScoreManager and add the score
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            PlayerController playerController = GetComponent<PlayerController>();
+            if (playerController != null) { playerController.PickUpToast(); }
             if (scoreManager != null)
             {
                 scoreManager.AddScore(scoreValue);
             }
-            audioSource.PlayOneShot(ItemPickUpSFX);
+            
             // Destroy the item
             Destroy(gameObject);
         }

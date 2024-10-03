@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashSound2;
     public AudioClip TakeDMG;
     public AudioClip PickUpButter;
+    public AudioClip ToastSFX;
     public AudioClip movementSound; // Sound played when moving left or right
     private AudioSource audioSource; // AudioSource to play sounds
     public ParticleSystem HitParticles;
@@ -328,8 +329,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DamageTimer()
     {
-        
         yield return new WaitForSeconds(1f);
         IsDamageable = true;
+    }
+
+    public void PickUpToast()
+    {
+        audioSource.PlayOneShot(ToastSFX);
     }
 }
