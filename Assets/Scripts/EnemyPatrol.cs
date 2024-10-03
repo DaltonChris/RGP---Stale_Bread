@@ -161,7 +161,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(34);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(28);
         }
     }
 }

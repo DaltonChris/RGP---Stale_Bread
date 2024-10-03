@@ -413,6 +413,14 @@ PrefabInstance:
       value: Level Gen
       objectReference: {fileID: 0}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: SpikesPreFab
+      value: 
+      objectReference: {fileID: 4430076992319623293, guid: c7d51c2361b06674b8c31a81806310b4, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: RoomGenAttempts
+      value: 2400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: BushPrefabs.Array.size
       value: 5
       objectReference: {fileID: 0}

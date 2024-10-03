@@ -85,6 +85,7 @@ public class LevelGenerator : MonoBehaviour
   [SerializeField] GameObject RoomLightPreFab; // Prefab for the light obj
   [SerializeField] GameObject PathLightPreFab; // Prefab for the light obj
   [SerializeField] GameObject EnemyPreFab; // Prefab for the enemy
+  [SerializeField] GameObject SpikesPreFab; // Prefab for the Spikes
   [SerializeField] GameObject[] LadderPreFabs; // Prefab for the tile obj
   [SerializeField] GameObject[] DeadTreePreFabs; // Prefab for A Tree
   [SerializeField] GameObject[] LargeTreePrefabs; // Prefab for A Tree
@@ -92,16 +93,18 @@ public class LevelGenerator : MonoBehaviour
 
   int[,] Regions; // An array of int's for each pos in the grid each int represents a different Region
   int CurrentRegion = -1; // Current region's ID (declared at -1, first region to be 0)
-  readonly int ConnectorAttempts = 65; // How many times will we try to create region connectors
+  readonly int ConnectorAttempts = 125; // How many times will we try to create region connectors
   readonly float LevelGenDelay = 0.005f; // The delay inbetween each generation action (To better visualise while developing)
   readonly List<Vector2Int> RoomList = new(); // A list of all grid position that contain a room
   readonly List<Room> Rooms = new(); // A dictionary of all rooms in the level
   readonly List<Vector2Int> LadderPositions = new(); // A list of all grid position that contain a ladder
   bool HasGenerated = false; // Flag to ensure only 1 level is generated per istance loaded.
+  int startRoomID;
+  int startRoomMinX, startRoomMaxX, startRoomMinY, startRoomMaxY;
   #endregion
 
-  #region Wait for SpaceBar to Generate / Get Directions-List
-  void Update()
+    #region Wait for SpaceBar to Generate / Get Directions-List
+    void Update()
   {
     // If spacebar is pressed and the level has not been generated
     // Initalise the grid (Start generating)
@@ -299,7 +302,13 @@ public class LevelGenerator : MonoBehaviour
   void AllocateStartArea(int startRoomSize) // Mayb--DONT add to room list (easy way to avoid spawnpoint item/enemy spawns)
   {
     StartRegion(); // Start a new region (Increment current region)
-    for (int y = GridHeight - 2; y >= GridHeight - (startRoomSize-3); y--) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
+    startRoomID = CurrentRegion; // Save the current region as the start room ID
+                                 // Calculate and store the bounds of the start room
+   startRoomMinX = 1;
+   startRoomMaxX = startRoomSize + 1;
+   startRoomMinY = GridHeight - (startRoomSize);
+   startRoomMaxY = GridHeight - 2;
+    for (int y = GridHeight - 2; y >= GridHeight - (startRoomSize-2); y--) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
     {
       for (int x = 1; x < startRoomSize + 2; x++) // For each Position in the grid starting at 1 on the x axis ending at size of the start room
       {
@@ -312,14 +321,30 @@ public class LevelGenerator : MonoBehaviour
         }
       }
     }
-    for (int x = startRoomSize; x < startRoomSize * 2; x++) // Create a constant path out of the room 
+    int tunnelStartX = startRoomMaxX; // Start the tunnel from the right side of the start room
+    int tunnelY = startRoomMinY; // Middle Y coordinate of the start room for symmetry
+
+    for (int x = tunnelStartX; x < tunnelStartX + 4; x++) // Extend the tunnel 4 tiles to the right
     {
-      int y = startRoomSize / 2;
-      Tiles[x, y].SetType(TileType.Path); // Set type
-      Regions[x, y] = CurrentRegion;// Update the Regions array with the new region information the room tile                     
-      RoomList.Add(new Vector2Int(x, y)); // Add the room position to the RoomList
+        for (int y = tunnelY; y >= tunnelY + 1; y--) // Create a 2-high tunnel
+        {
+            Tiles[x, y].SetType(TileType.Path); // Set type to path
+            Regions[x, y] = CurrentRegion; // Update the Regions array
+            RoomList.Add(new Vector2Int(x, y)); // Add the room position to the RoomList
+        }
     }
-  }
+
+/*    // tiles down from the end of the horizontal tunnel
+    for (int y = tunnelY + 2; y < tunnelY + 6; y++) // Create the downward tunnel
+    {
+        for (int x = tunnelStartX + 3; x <= tunnelStartX + 4; x++) // Create a 2-wide tunnel
+        {
+            Tiles[x, y].SetType(TileType.Path); // Set type to path
+            Regions[x, y] = CurrentRegion; // Update the Regions array
+            RoomList.Add(new Vector2Int(x, y)); // Add the room position to the RoomList
+        }
+    }*/
+    }
   #endregion
 
   #region Maze Generation Methods
@@ -805,7 +830,7 @@ public class LevelGenerator : MonoBehaviour
         if (IsGrassTile(x, y)) // Check that the tile is a grass tile
         {
           // if so roll a  10%~ chance to spawn a coin at the postion +1 on the y axis
-          if (Random.Range(0, 5) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
+          if (Random.Range(0, 6) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
 
           if (IsTileInRoomList(x, y + 1)) // Check if the tile above is within a room
           {
@@ -827,16 +852,34 @@ public class LevelGenerator : MonoBehaviour
     {
       for (int x = 0; x < GridWidth - 1; x++) // For each Position in the grids x axis
       {
+        // Skip if the tile falls within the start room's bounds
+        if (x >= startRoomMinX && x <= startRoomMaxX && y >= startRoomMinY && y <= startRoomMaxY)
+        {
+            continue; // Skip this tile if it's part of the start room
+        }
+
         // can spawn only on grass tiles that are the floors of rooms i chose to keep paths clear for now
         if (IsGrassTile(x, y) && IsTileInRoomList(x, y + 1))
         {
           // Check if the grass tile is isloated (cant spawn on isolated grass tiles must have a grass neighbour)
           if (Tiles[x - 1, y].Type == TileType.Grass || Tiles[x + 1, y].Type == TileType.Grass)
           {
-            if (Random.Range(0, 5) == 0) // 16%~ chance of spawning at valid pos
+            if (Random.Range(0, 4) == 0) // 16%~ chance of spawning at valid pos
             {
               // Spawn an enemy at the position 1 tile above on y
               Instantiate(EnemyPreFab, new Vector3(x, y + 1, 0), Quaternion.identity);
+            }
+          }
+        }
+        else if (IsGrassTile(x, y))
+        {
+        // Check if the grass tile is isloated (cant spawn on isolated grass tiles must have a grass neighbour)
+        if (Tiles[x - 1, y].Type == TileType.Grass || Tiles[x + 1, y].Type == TileType.Grass)
+        {
+            if (Random.Range(0, 6) == 0) // 16%~ chance of spawning at valid pos
+            {
+                // Spawn an enemy at the position 1 tile above on y
+                Instantiate(SpikesPreFab, new Vector3(x, y + 1, 0), Quaternion.identity);
             }
           }
         }
