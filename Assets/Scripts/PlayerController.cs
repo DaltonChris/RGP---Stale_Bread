@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -325,6 +326,12 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(TakeDMG);
         HitParticles.Play();
         HealthBar.value = Health;
+
+        // Load Death_Scene if player HP is 0
+        if (Health <= 0)
+        {
+            SceneManager.LoadScene("Death_Screen");
+        }
     }
 
     IEnumerator DamageTimer()

@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     public int score = 0; // The player's score
     public TMP_Text scoreText; // Reference to the TMP Text UI element
 
+    public static int finalScore = 0;
+
     // Updates the UI on start
     private void Start()
     {
@@ -18,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+        finalScore = score;
         UpdateScoreUI();
     }
 
