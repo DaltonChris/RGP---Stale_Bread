@@ -2477,7 +2477,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "TUA - 2024 - RGP-204 \nGroup: Stale Bread\n\nContributors:\nDaltonChris,
-    DylanCoon,deepraj, Mikhael"
+    DylanCoon, deepraj, Mikhael."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
   m_sharedMaterial: {fileID: 1801878811468594544, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
