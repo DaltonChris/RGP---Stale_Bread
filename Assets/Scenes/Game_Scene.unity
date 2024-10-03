@@ -255,7 +255,7 @@ MonoBehaviour:
     Down = S
 
 
-    Toast = Score :)'
+    Bread = Score :)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
   m_sharedMaterial: {fileID: 1801878811468594544, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: BushPrefabs.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: BushPrefabs.Array.data[0]
@@ -429,8 +429,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1469189966933415039, guid: 32347d1587f0e044cba93f2801d8c6e5, type: 3}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: BushPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1469189966933415039, guid: 6757869d5be212a45bbe3a1d87d2bf7a, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: BushPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1469189966933415039, guid: f0b2bc2d3a1d3c641b8fb1db850bc5ef, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: DeadTreePreFabs.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: LargeTreePrefabs.Array.size
@@ -444,6 +452,18 @@ PrefabInstance:
       propertyPath: DeadTreePreFabs.Array.data[2]
       value: 
       objectReference: {fileID: 1469189966933415039, guid: b62255fb09934fb4e9916ca97102c2e5, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: DeadTreePreFabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1469189966933415039, guid: 2b078c90ec9e6a74a96d6eb566761b11, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: DeadTreePreFabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1469189966933415039, guid: 78fc57c09136b5e47b53035dfe16ae22, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: DeadTreePreFabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1469189966933415039, guid: 78fc57c09136b5e47b53035dfe16ae22, type: 3}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: LargeTreePrefabs.Array.data[0]
       value: 
@@ -726,7 +746,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 62e8049c408e1c34d82f7400698aefe5, type: 3}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: dashDuration
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: movementSound

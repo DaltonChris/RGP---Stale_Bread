@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1995bb3487141a479719f5427ee376e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02404e5b74d9bbb48a90a06227aa7ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallSprite: {fileID: 21300000, guid: 48ebc9151c5e2834e9fb98a75853bc8b, type: 3}
-  PathSprite: {fileID: 21300000, guid: bf19f94e2f1e626499440bb325ed5b95, type: 3}
-  GrassSprite: {fileID: 21300000, guid: db7b496dca6f6b9469af59fe11069773, type: 3}
+  WallSprite: {fileID: 21300000, guid: 8cd89251fe7be4143823b8c9ac100873, type: 3}
+  PathSprite: {fileID: 21300000, guid: 8b787cceef627ef4b8b24f8c46d79db4, type: 3}
+  GrassSprite: {fileID: 21300000, guid: b1995bb3487141a479719f5427ee376e, type: 3}
 --- !u!61 &-2577949447464736656
 BoxCollider2D:
   m_ObjectHideFlags: 0
