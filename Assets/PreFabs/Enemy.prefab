@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundPos: {fileID: 6817646581421783368}
   EyesPos: {fileID: 7603024351404834013}
-  moveSpeed: 1
+  moveSpeed: 1.25
   _rb: {fileID: 2376212223858264518}
 --- !u!50 &2376212223858264518
 Rigidbody2D:
