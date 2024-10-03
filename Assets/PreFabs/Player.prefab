@@ -111,7 +111,7 @@ MonoBehaviour:
   dashDuration: 0.2
   dashRechargeTime: 10
   groundCheck: {fileID: 2644545879430401398}
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.195
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -121,6 +121,9 @@ MonoBehaviour:
   dashSound1: {fileID: 8300000, guid: 2ede8c37e0a2c134f83f5dd3cb029e4c, type: 3}
   dashSound2: {fileID: 8300000, guid: 70175d7432755de419ae725068a881b0, type: 3}
   movementSound: {fileID: 0}
+  HealthBar: {fileID: 0}
+  MaxHealth: 100
+  Health: 0
 --- !u!50 &7704420137146543404
 Rigidbody2D:
   serializedVersion: 4

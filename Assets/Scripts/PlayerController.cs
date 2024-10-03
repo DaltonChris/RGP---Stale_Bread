@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashSound2;
     public AudioClip movementSound; // Sound played when moving left or right
     private AudioSource audioSource; // AudioSource to play sounds
+    public ParticleSystem HitParticles;
 
 
     private bool IsFacingRight = true; // Tracks the player's facing direction, initialize to true (facing right)
@@ -302,6 +303,7 @@ public class PlayerController : MonoBehaviour
         if (!IsDamageable) { return; }
         IsDamageable = false;
         Health -= dmg;
+        HitParticles.Play();
         HealthBar.value = Health;
     }
 
