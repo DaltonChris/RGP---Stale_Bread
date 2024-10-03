@@ -299,7 +299,7 @@ public class LevelGenerator : MonoBehaviour
   void AllocateStartArea(int startRoomSize) // Mayb--DONT add to room list (easy way to avoid spawnpoint item/enemy spawns)
   {
     StartRegion(); // Start a new region (Increment current region)
-    for (int y = GridHeight - 2; y >= GridHeight - (startRoomSize / 2); y--) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
+    for (int y = GridHeight - 2; y >= GridHeight - (startRoomSize-3); y--) // For each Position in the grid starting at 1 on the y axis ending at size of the start room
     {
       for (int x = 1; x < startRoomSize + 2; x++) // For each Position in the grid starting at 1 on the x axis ending at size of the start room
       {
