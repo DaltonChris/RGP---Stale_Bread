@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentDashCharges++; // Add a dash charge
                 Destroy(other.gameObject); // Remove the fuel source after collecting
-                audioSource.PlayOneShot(PickUpButter);
+                SfxManager.Instance.PlaySfx(PickUpButter);
                 UpdateDashChargeUI();
             }
         }
@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
         if (!IsDamageable) { return; }
         IsDamageable = false;
         Health -= dmg;
-        audioSource.PlayOneShot(TakeDMG);
+        SfxManager.Instance.PlaySfx(TakeDMG);
         HitParticles.Play();
         HealthBar.value = Health;
 

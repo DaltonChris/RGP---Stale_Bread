@@ -7,6 +7,7 @@ TagManager:
   - DashFuel
   - Ladder
   - GameMusic
+  - SFX
   layers:
   - Default
   - TransparentFX
