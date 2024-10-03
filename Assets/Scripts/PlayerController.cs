@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip dashSound1; 
     public AudioClip dashSound2;
+    public AudioClip TakeDMG;
+    public AudioClip PickUpButter;
     public AudioClip movementSound; // Sound played when moving left or right
     private AudioSource audioSource; // AudioSource to play sounds
     public ParticleSystem HitParticles;
@@ -276,6 +278,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentDashCharges++; // Add a dash charge
                 Destroy(other.gameObject); // Remove the fuel source after collecting
+                audioSource.PlayOneShot(PickUpButter);
                 UpdateDashChargeUI();
             }
         }
@@ -318,6 +321,7 @@ public class PlayerController : MonoBehaviour
         if (!IsDamageable) { return; }
         IsDamageable = false;
         Health -= dmg;
+        audioSource.PlayOneShot(TakeDMG);
         HitParticles.Play();
         HealthBar.value = Health;
     }
