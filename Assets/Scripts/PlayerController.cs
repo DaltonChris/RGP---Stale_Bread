@@ -63,17 +63,9 @@ public class PlayerController : MonoBehaviour
         // Get horizontal input (A/D keys or Left/Right arrow keys)
         moveInput = Input.GetAxis("Horizontal");
 
-        if (isOnLadder)
-        {
-            // Vertical movement for ladder climbing
-            float verticalInput = Input.GetAxis("Vertical"); // W/S or Up/Down arrows
-                                                             // Allow movement on both axes
-            rb.velocity = new Vector2(moveInput * moveSpeed, verticalInput * climbSpeed);
+        HandleLadders();
 
-            // Disable gravity while on the ladder
-            rb.gravityScale = 0.1f;
-        }
-        else
+        if (!isOnLadder)
         {
             // Re-enable gravity if not on ladder
             rb.gravityScale = 1f;
@@ -89,52 +81,10 @@ public class PlayerController : MonoBehaviour
                 // Check if the player is grounded
                 isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-                // Jumping logic
-                 if (isGrounded)
-                {
-                    canDoubleJump = true; // Reset double jump when player is grounded
+                ManageJump();
 
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
-                    }
-                }
-                else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
-                {
-                    // Double jump logic
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    canDoubleJump = false; // Disable further double jumps
-                    playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+                MovementAnimations();
 
-                    // Optional: You can add a sound or effect for the double jump
-                    Debug.Log("Double Jump activated!");
-                }
-
-
-                //Uses velocity to determine the general movement animations
-                if (isGrounded)
-                {
-                    if (rb.velocity.x != 0)
-                    {
-                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.RUN);
-                    }
-                    else
-                    {
-                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.IDLE);
-                    }
-                }
-                else
-                {
-                    if (rb.velocity.y > 0)
-                    {
-                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
-                    }
-                    else
-                    {
-                        playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
-                    }
-                }
 
                 // Dash input logic
                 if (currentDashCharges > 0 && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
@@ -163,6 +113,71 @@ public class PlayerController : MonoBehaviour
         Turncheck(); // Check if the player needs to turn
     }
 
+    void ManageJump()
+    {
+        // Jumping logic
+        if (isGrounded)
+        {
+            canDoubleJump = true; // Reset double jump when player is grounded
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+            }
+        }
+        else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            // Double jump logic
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            canDoubleJump = false; // Disable further double jumps
+            playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+
+            // Optional: You can add a sound or effect for the double jump
+            Debug.Log("Double Jump activated!");
+        }
+    }
+
+    void HandleLadders()
+    {
+        if (isOnLadder)
+        {
+            // Vertical movement for ladder climbing
+            float verticalInput = Input.GetAxis("Vertical"); // W/S or Up/Down arrows
+                                                             // Allow movement on both axes
+            rb.velocity = new Vector2(moveInput * moveSpeed, verticalInput * climbSpeed);
+
+            // Disable gravity while on the ladder
+            rb.gravityScale = 0.25f;
+        }
+    }
+
+    void MovementAnimations()
+    {
+        //Uses velocity to determine the general movement animations
+        if (isGrounded)
+        {
+            if (rb.velocity.x != 0)
+            {
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.RUN);
+            }
+            else
+            {
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.IDLE);
+            }
+        }
+        else
+        {
+            if (rb.velocity.y > 0)
+            {
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.JUMP);
+            }
+            else
+            {
+                playerAnim.ChangeAnimation(PlayerAnimations.AnimationState.FALL);
+            }
+        }
+    }
 
     private void Turncheck()
     {
