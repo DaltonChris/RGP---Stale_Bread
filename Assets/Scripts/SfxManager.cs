@@ -28,7 +28,7 @@ public class SfxManager : MonoBehaviour
 
     public GameObject sfxSound;
 
-    private float SfxVolume = 0.3f;
+    private float SfxVolume = 0.4f;
     private AudioSource sfxSource;
 
 
