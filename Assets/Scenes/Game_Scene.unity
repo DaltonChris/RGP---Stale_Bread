@@ -828,6 +828,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381661916167405893, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 5204028861642985188, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
       value: 0.014196873
