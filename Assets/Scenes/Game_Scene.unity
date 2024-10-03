@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.5, y: 2.15}
+  m_AnchoredPosition: {x: -9.75, y: 1.55}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437929582
@@ -182,17 +182,24 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Left <- A        D -> Right
 
-
-    ^ (UP)  W / Space ^ (Can Double Jump)
+    ^ Space = Jump (Can Double Jump)
 
 
     Shift
-    = Boost (needs Butter)
+    = Dash-Boost (needs Butter)
+
+    Collect Butter for more Dash
 
 
-    Ladders hold up/down to traverse
+    Ladders hold
+    up/down to traverse
 
-'
+    Up = W
+
+    Down = S
+
+
+    Toast = Score :)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
   m_sharedMaterial: {fileID: 1801878811468594544, guid: 037b284291f991747b66437ec6ad4dc2, type: 2}
@@ -626,6 +633,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: TakeDMG
+      value: 
+      objectReference: {fileID: 8300000, guid: cc2973af3af4baf438e0501f6f87e57c, type: 3}
+    - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: ToastSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ad8f1cb74dd5484094003cbd16f8fab, type: 3}
+    - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1306006224}
@@ -649,6 +664,10 @@ PrefabInstance:
       propertyPath: HitParticles
       value: 
       objectReference: {fileID: 1209547203}
+    - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: PickUpButter
+      value: 
+      objectReference: {fileID: 8300000, guid: 62e8049c408e1c34d82f7400698aefe5, type: 3}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: dashDuration
       value: 0.3
@@ -815,6 +834,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690623691825485305, guid: b7d14ccdc88eac6429fd61b483e1dfea, type: 3}
       propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897163573271279271, guid: b7d14ccdc88eac6429fd61b483e1dfea, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8761843545611944219, guid: b7d14ccdc88eac6429fd61b483e1dfea, type: 3}
