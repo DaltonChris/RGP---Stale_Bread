@@ -248,7 +248,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0.22583151, g: 0.06655734, b: 0, a: 0.6862745}
+  m_Color: {r: 0.5471698, g: 0, b: 0.03211422, a: 0.6862745}
   m_Intensity: 1
   m_LightVolumeIntensity: 0.75
   m_LightVolumeIntensityEnabled: 1
@@ -425,20 +425,20 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.359375, y: -0.171875}
-      - {x: 0.25, y: -0.125}
+    - - {x: 0.359375, y: -0.17187501}
+      - {x: 0.25, y: -0.12500001}
       - {x: 0.09375, y: 0.078125}
       - {x: 0.046875, y: 0.078125}
       - {x: -0.15625, y: -0.0625}
-      - {x: -0.328125, y: -0.171875}
-      - {x: -0.453125, y: -0.296875}
-      - {x: -0.5, y: -0.40625}
-      - {x: -0.5, y: -0.484375}
-      - {x: -0.46875, y: -0.5}
+      - {x: -0.328125, y: -0.17187501}
+      - {x: -0.36408412, y: -0.21673827}
+      - {x: -0.38869885, y: -0.31275713}
+      - {x: -0.37089074, y: -0.41314232}
+      - {x: -0.22833969, y: -0.504452}
       - {x: 0.46875, y: -0.5}
       - {x: 0.5, y: -0.46875}
       - {x: 0.5, y: -0.25}
-      - {x: 0.484375, y: -0.234375}
+      - {x: 0.484375, y: -0.23437501}
   m_UseDelaunayMesh: 0
 --- !u!114 &7877526959582597873
 MonoBehaviour:
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0.22583151, g: 0.06655734, b: 0, a: 0.6862745}
+  m_Color: {r: 0.5471698, g: 0, b: 0.03211422, a: 0.6862745}
   m_Intensity: 1
   m_LightVolumeIntensity: 0.75
   m_LightVolumeIntensityEnabled: 1
