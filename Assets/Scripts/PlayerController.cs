@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     public int Health;
     bool IsDamageable = true;
 
+    private Image healthBarFill;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,6 +61,9 @@ public class PlayerController : MonoBehaviour
         UpdateDashChargeUI(); // Initialize UI with current charge count.
         Health = MaxHealth;
         playerAnim = GetComponent<PlayerAnimations>();
+
+        healthBarFill = HealthBar.fillRect.GetComponent<Image>();//for helathbar to change color.
+        UpdateHealthBarColor();
     }
 
 
@@ -327,12 +332,31 @@ public class PlayerController : MonoBehaviour
         HitParticles.Play();
         HealthBar.value = Health;
 
+        UpdateHealthBarColor();
+
         // Load Death_Scene if player HP is 0
         if (Health <= 0)
         {
             SceneManager.LoadScene("Death_Screen");
         }
     }
+
+    private void UpdateHealthBarColor()
+    {
+        float healthPercentage = (float)Health / MaxHealth;
+
+        if (healthPercentage > 0.5f)
+        {
+            // Health > 50% -> Green
+            healthBarFill.color = Color.Lerp(Color.yellow, Color.green, (healthPercentage - 0.5f) * 2);
+        }
+        else
+        {
+            // Health <= 50% -> Red
+            healthBarFill.color = Color.Lerp(Color.red, Color.yellow, healthPercentage * 2);
+        }
+    }
+
 
     IEnumerator DamageTimer()
     {
