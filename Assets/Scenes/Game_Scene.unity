@@ -426,6 +426,10 @@ PrefabInstance:
       value: 2400
       objectReference: {fileID: 0}
     - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
+      propertyPath: HealthPackPreFab
+      value: 
+      objectReference: {fileID: 6326280162838204798, guid: c867e021917452e45a055cec3c2a2919, type: 3}
+    - target: {fileID: 2564756660827766847, guid: 3c1bd9cf07651f84d9f2b49d556d8f2a, type: 3}
       propertyPath: BushPrefabs.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -867,6 +871,10 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1306006224}
+    - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
+      propertyPath: HealthSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a59eb1d1236e3149b80c0f37b175557, type: 3}
     - target: {fileID: 2511857169040662141, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
       propertyPath: dashSpeed
       value: 18

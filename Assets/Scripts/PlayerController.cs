@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip PickUpButter;
     public AudioClip ToastSFX;
     public AudioClip movementSound; // Sound played when moving left or right
+    public AudioClip HealthSFX;
     private AudioSource audioSource; // AudioSource to play sounds
     public ParticleSystem HitParticles;
 
@@ -296,6 +297,18 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Ladder"))
         {
             isOnLadder = true; // Player is now on the ladder
+        }
+
+        if (other.CompareTag("HPack"))
+        {
+            if(Health < MaxHealth)
+            {
+                Health += 10;
+                HealthBar.value = Health;
+                Destroy(other.gameObject); // Remove the HP source after collecting
+                SfxManager.Instance.PlaySfx(HealthSFX);
+            }
+
         }
     }
 

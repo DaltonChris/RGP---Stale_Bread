@@ -81,6 +81,7 @@ public class LevelGenerator : MonoBehaviour
   [SerializeField] Tile[,] Tiles; // 2D Array of tile Obj's (Level's Grid)
   [SerializeField] GameObject TilePreFab; // Prefab for the tile obj
   [SerializeField] GameObject CoinPreFab; // Prefab for the coin obj
+  [SerializeField] GameObject HealthPackPreFab;
   [SerializeField] GameObject ChestPreFab; // Prefab for the chest obj
   [SerializeField] GameObject RoomLightPreFab; // Prefab for the light obj
   [SerializeField] GameObject PathLightPreFab; // Prefab for the light obj
@@ -831,7 +832,8 @@ public class LevelGenerator : MonoBehaviour
         {
           // if so roll a  10%~ chance to spawn a coin at the postion +1 on the y axis
           if (Random.Range(0, 6) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
-
+          // if so roll a  5%~ chance to spawn a coin at the postion +1 on the y axis
+          if (Random.Range(0, 20) == 0) Instantiate(HealthPackPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
           if (IsTileInRoomList(x, y + 1)) // Check if the tile above is within a room
           {
             // if so roll a  7%~ chance to spawn a chest at the postion +1 on the y axis

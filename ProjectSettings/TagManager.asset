@@ -10,6 +10,7 @@ TagManager:
   - SFX
   - Spikes
   - Score
+  - HPack
   layers:
   - Default
   - TransparentFX
