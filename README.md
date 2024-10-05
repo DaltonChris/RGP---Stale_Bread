@@ -8,6 +8,12 @@
 - Dylan Coon
 - Deepraj Bhullar
 - Mikhael O'brien
+  
+## References:
+- [Music Track] SECTOR OFF LIMITS –  Royalty-Free. Music by Eric Matyas - www.soundimage.org
+[https://soundimage.org/wp-content/uploads/2016/02/Sector-Off-Limits_Looping.mp3](https://soundimage.org/wp-content/uploads/2014/10/Sector-Off-Limits.mp3)
+- [Health Pack Sprites] 32px Sprite sheet - Gerald Burke - 2018 - OpenGameArt.
+[https://soundimage.org/wp-content/uploads/2016/02/Sector-Off-Limits_Looping.mp3](https://opengameart.org/content/health-pickup)
 
 ## Media:
 ### Dalton Chris 3/10/24 -- Compressed .Gif Play Testing 
