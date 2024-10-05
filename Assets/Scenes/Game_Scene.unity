@@ -787,51 +787,11 @@ RectTransform:
   m_AnchoredPosition: {x: 10, y: 118.7}
   m_SizeDelta: {x: 750, y: 50}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1601653235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1914941496298832820, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
-  m_PrefabInstance: {fileID: 1701231451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1601653240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4279788580809128948, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
   m_PrefabInstance: {fileID: 1701231451}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &1601653241
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601653235}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!114 &1692289866 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3859989194471746192, guid: b7d14ccdc88eac6429fd61b483e1dfea, type: 3}
@@ -1014,10 +974,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1914941496298832820, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1601653241}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80f11baf4cee3214aa43ea455dd6a4db, type: 3}
 --- !u!1001 &1751233423
 PrefabInstance:
