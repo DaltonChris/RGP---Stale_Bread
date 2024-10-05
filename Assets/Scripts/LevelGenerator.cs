@@ -1024,7 +1024,7 @@ public class LevelGenerator : MonoBehaviour
       int randomBush = Random.Range(0, BushPrefabs.Length);
 
       // if the tiles to the right isnt a grass tile (path/wall) skip this tile
-      if (Tiles[pos.x + 1, pos.y].Type != TileType.Grass) continue; // bushes are offset this is to manage overflow
+      //if (Tiles[pos.x + 1, pos.y].Type != TileType.Grass) continue; // bushes are offset this is to manage overflow
       // Spawn the randomly selected bush at the pos
       Instantiate(BushPrefabs[randomBush], new Vector3(pos.x, pos.y, 0), Quaternion.identity);
     }

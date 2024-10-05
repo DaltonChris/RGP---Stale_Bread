@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 20f; // Speed of the dash
     public float dashDuration = 0.2f; // Duration of the dash
     public float dashRechargeTime = 10f; // Time in seconds to recharge a dash.
+    ScoreManager scoreManager;
 
     public Transform groundCheck; // A point used to check if the player is grounded
     public float groundCheckRadius = 0.2f; // Radius of the ground check
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
         UpdateDashChargeUI(); // Initialize UI with current charge count.
         Health = MaxHealth;
         playerAnim = GetComponent<PlayerAnimations>();
-
+        scoreManager = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreManager>();
         healthBarFill = HealthBar.fillRect.GetComponent<Image>();//for helathbar to change color.
         UpdateHealthBarColor();
     }
@@ -214,6 +215,7 @@ public class PlayerController : MonoBehaviour
         
         if (moveInput != 0)
         {
+            scoreManager.AddScore(1);
             isDashing = true;
             dashTime = dashDuration;
 
@@ -283,6 +285,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentDashCharges < maxDashCharges)
             {
+                scoreManager.AddScore(2);
                 currentDashCharges++; // Add a dash charge
                 Destroy(other.gameObject); // Remove the fuel source after collecting
                 SfxManager.Instance.PlaySfx(PickUpButter);
@@ -357,15 +360,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     IEnumerator DamageTimer()
     {
         yield return new WaitForSeconds(1f);
         IsDamageable = true;
-    }
-
-    public void PickUpToast()
-    {
-        audioSource.PlayOneShot(ToastSFX);
     }
 }

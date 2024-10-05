@@ -6,9 +6,11 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0; // The player's score
-    public TMP_Text scoreText; // Reference to the TMP Text UI element
-
+    public TMP_Text breadText; // Reference to the TMP Text UI element
+    public static int finalBreads;
+    public TMP_Text scoreText;
     public static int finalScore = 0;
+    int collectedBread= 0;
 
     // Updates the UI on start
     private void Start()
@@ -24,9 +26,16 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    public void AddBread()
+    {
+        collectedBread++;
+        finalBreads = collectedBread;
+    }
+
     // Method to update the UI with the current score
     private void UpdateScoreUI()
     {
-        scoreText.text = "BREAD: " + score;
+        breadText.text = "BREAD: " + collectedBread;
+        scoreText.text = "SCORE: " + score;
     }
 }
