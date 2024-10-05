@@ -30,6 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         collectedBread++;
         finalBreads = collectedBread;
+        UpdateScoreUI();
     }
 
     // Method to update the UI with the current score
