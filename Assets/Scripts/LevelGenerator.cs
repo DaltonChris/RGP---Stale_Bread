@@ -832,8 +832,8 @@ public class LevelGenerator : MonoBehaviour
         {
           // if so roll a  10%~ chance to spawn a coin at the postion +1 on the y axis
           if (Random.Range(0, 6) == 0) Instantiate(CoinPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
-          // if so roll a  5%~ chance to spawn a coin at the postion +1 on the y axis
-          if (Random.Range(0, 20) == 0) Instantiate(HealthPackPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
+          // if so roll a  1/30 chance to spawn a coin at the postion +1 on the y axis
+          if (Random.Range(0, 30) == 0) Instantiate(HealthPackPreFab, new Vector3(x, y + 1, 0), Quaternion.identity); // spawn a coin
           if (IsTileInRoomList(x, y + 1)) // Check if the tile above is within a room
           {
             // if so roll a  7%~ chance to spawn a chest at the postion +1 on the y axis
